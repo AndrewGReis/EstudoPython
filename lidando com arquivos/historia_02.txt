@@ -1,0 +1,5 @@
+Meu novo arquivo!
+ Testando
+
+Vamos incluir mais textos!
+Não preciso pular linha no início.
