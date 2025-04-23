@@ -1,0 +1,6 @@
+DEBUG:root:Entrei aqui.
+DEBUG:root:Sai aqui.
+INFO:root:Pessoa X logou
+ERROR:root:Deu erro na solicitação de uma pessoa!
+CRITICAL:root:A minha aplicação parou! 
+WARNING:root:Algo de errado aconteceu
