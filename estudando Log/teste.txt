@@ -1,0 +1,6 @@
+2025-04-23 18:29:26,100 root DEBUG: Entrei aqui.
+2025-04-23 18:29:26,103 root DEBUG: Sai aqui.
+2025-04-23 18:29:26,107 root INFO: Pessoa X logou
+2025-04-23 18:29:26,109 root ERROR: Deu erro na solicitação de uma pessoa!
+2025-04-23 18:29:26,110 root CRITICAL: A minha aplicação parou! 
+2025-04-23 18:29:26,112 root WARNING: Algo de errado aconteceu
