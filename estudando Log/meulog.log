@@ -1,0 +1,42 @@
+2025-04-25 08:31:25,661 - root - INFO - O banco de dados database.txt não foi encontrado. Criando um novo. - load_users - Linha: 34
+2025-04-25 08:31:25,684 - root - WARNING - Operação não reconhecida: --f=c:\users\andrew\appdata\roaming\jupyter\runtime\kernel-v3d7078385c07166e04abb92aab65d168d023b71d7.json - main - Linha: 145
+2025-04-25 08:35:53,961 - root - INFO - O banco de dados database.txt não foi encontrado. Criando um novo. - load_users - Linha: 35
+2025-04-25 08:36:18,105 - root - INFO - O banco de dados database.txt não foi encontrado. Criando um novo. - load_users - Linha: 35
+2025-04-25 08:36:35,409 - root - INFO - O banco de dados database.txt não foi encontrado. Criando um novo. - load_users - Linha: 35
+2025-04-25 08:37:05,286 - root - INFO - O banco de dados database.txt não foi encontrado. Criando um novo. - load_users - Linha: 35
+2025-04-25 08:37:28,974 - root - INFO - O banco de dados database.txt não foi encontrado. Criando um novo. - load_users - Linha: 35
+2025-04-25 08:43:15,469 - root - INFO - O banco de dados database.txt não foi encontrado. Criando um novo. - load_users - Linha: 33
+2025-04-25 08:43:32,828 - root - INFO - Operação 'add': Adicionando usuário - nome=andrew, idade=32 - add_user - Linha: 50
+2025-04-25 08:43:32,829 - root - DEBUG - Salvando 1 usuários no arquivo database.txt. - save_users - Linha: 39
+2025-04-25 08:43:32,831 - root - INFO - Usuários salvos com sucesso. Total de usuários: 1 - save_users - Linha: 43
+2025-04-25 08:43:32,831 - root - INFO - Usuário andrew adicionado com sucesso. Total de usuários: 1 - add_user - Linha: 59
+2025-04-25 08:43:45,885 - root - INFO - Operação 'add': Adicionando usuário - nome=diego, idade=30 - add_user - Linha: 50
+2025-04-25 08:43:45,885 - root - DEBUG - Salvando 2 usuários no arquivo database.txt. - save_users - Linha: 39
+2025-04-25 08:43:45,887 - root - INFO - Usuários salvos com sucesso. Total de usuários: 2 - save_users - Linha: 43
+2025-04-25 08:43:45,888 - root - INFO - Usuário diego adicionado com sucesso. Total de usuários: 2 - add_user - Linha: 59
+2025-04-25 08:44:01,802 - root - INFO - Operação 'search': Buscando usuário - nome=andrew - search_user - Linha: 77
+2025-04-25 08:44:01,802 - root - INFO - Usuário encontrado: andrew - 32 - search_user - Linha: 81
+2025-04-25 08:44:27,381 - root - DEBUG - Carregando usuários do arquivo database.txt... - load_users - Linha: 23
+2025-04-25 08:44:27,383 - root - INFO - Usuários carregados com sucesso. Total de usuários: 2 - load_users - Linha: 28
+2025-04-25 08:44:48,068 - root - INFO - Operação 'add': Adicionando usuário - nome=andrew, idade=32 - add_user - Linha: 50
+2025-04-25 08:44:48,068 - root - WARNING - Usuário andrew já existe no banco de dados. - add_user - Linha: 53
+2025-04-25 08:45:03,092 - root - INFO - Operação 'search': Buscando usuário - nome=andrew - search_user - Linha: 77
+2025-04-25 08:45:03,093 - root - INFO - Usuário encontrado: andrew - 32 - search_user - Linha: 81
+2025-04-25 08:45:14,826 - root - INFO - Operação 'remove': Removendo usuário - nome=andrew - rm_user - Linha: 64
+2025-04-25 08:45:14,826 - root - DEBUG - Salvando 1 usuários no arquivo database.txt. - save_users - Linha: 39
+2025-04-25 08:45:14,834 - root - INFO - Usuários salvos com sucesso. Total de usuários: 1 - save_users - Linha: 43
+2025-04-25 08:45:14,834 - root - INFO - Usuário andrew removido com sucesso. Total de usuários restantes: 1 - rm_user - Linha: 69
+2025-04-25 08:45:19,822 - root - INFO - Operação 'search': Buscando usuário - nome=andrew - search_user - Linha: 77
+2025-04-25 08:45:19,822 - root - INFO - Usuário andrew não encontrado. - search_user - Linha: 84
+2025-04-25 08:52:12,406 - root - DEBUG - Carregando usuários do arquivo database.txt... - load_users - Linha: 21
+2025-04-25 08:52:12,407 - root - INFO - Usuários carregados com sucesso. Total de usuários: 1 - load_users - Linha: 26
+2025-04-25 08:52:18,251 - root - INFO - Operação 'list': Listando todos os usuários - list_users - Linha: 87
+2025-04-25 08:52:36,472 - root - INFO - Operação 'add': Adicionando usuário - nome=andrew reis, idade=32 - add_user - Linha: 48
+2025-04-25 08:52:36,483 - root - DEBUG - Salvando 2 usuários no arquivo database.txt. - save_users - Linha: 37
+2025-04-25 08:52:36,512 - root - INFO - Usuários salvos com sucesso. Total de usuários: 2 - save_users - Linha: 41
+2025-04-25 08:52:36,513 - root - INFO - Usuário andrew reis adicionado com sucesso. Total de usuários: 2 - add_user - Linha: 57
+2025-04-25 08:52:48,211 - root - INFO - Operação 'add': Adicionando usuário - nome=joao teste, idade=20 - add_user - Linha: 48
+2025-04-25 08:52:48,211 - root - DEBUG - Salvando 3 usuários no arquivo database.txt. - save_users - Linha: 37
+2025-04-25 08:52:48,215 - root - INFO - Usuários salvos com sucesso. Total de usuários: 3 - save_users - Linha: 41
+2025-04-25 08:52:48,216 - root - INFO - Usuário joao teste adicionado com sucesso. Total de usuários: 3 - add_user - Linha: 57
+2025-04-25 08:53:11,036 - root - INFO - Operação 'list': Listando todos os usuários - list_users - Linha: 87
