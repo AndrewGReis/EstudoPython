@@ -1,92 +1,85 @@
-# %%
 import sys
 import os
 import logging
-from typing import Optional, Dict
+from typing import Dict, Optional
 
 # Configuração de logging
 logging.basicConfig(
-    filename='meulog.log',
-    level=logging.DEBUG,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s - %(funcName)s - Linha: %(lineno)d'
+    filename='./meulog.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(funcName)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger()
 
-DATABASE = "database.txt"
+DATABASE = "./database.txt"
 
 def load_users() -> Dict[str, str]:
     """Carrega os usuários do banco de dados (arquivo) em um dicionário."""
     users = {}
     if os.path.exists(DATABASE):
+        logger.debug(f"Carregando usuários de {DATABASE}")
         try:
-            logger.debug(f"Carregando usuários do arquivo {DATABASE}...")
             with open(DATABASE, "r") as f:
                 for line in f:
                     name, age = line.strip().split(",")
                     users[name] = age
-            logger.info(f"Usuários carregados com sucesso. Total de usuários: {len(users)}")
         except Exception as e:
-            logger.error(f"Erro ao carregar dados do arquivo {DATABASE}: {e}")
+            logger.error(f"Erro ao carregar usuários: {e}")
             raise
     else:
-        logger.info(f"O banco de dados {DATABASE} não foi encontrado. Criando um novo.")
+        logger.debug("Nenhum usuário pré-registrado")
     return users
 
 def save_users(users: Dict[str, str]):
     """Salva os dados dos usuários no arquivo."""
     try:
-        logger.debug(f"Salvando {len(users)} usuários no arquivo {DATABASE}.")
-        with open(DATABASE, "w") as f:
+        logger.info("Atualizando os registros do banco de dados...")
+        with open(DATABASE, "w+") as f:
             for name, age in users.items():
                 f.write(f"{name},{age}\n")
-        logger.info(f"Usuários salvos com sucesso. Total de usuários: {len(users)}")
     except Exception as e:
-        logger.error(f"Erro ao salvar usuários no arquivo {DATABASE}: {e}")
+        logger.error(f"Falha ao atualizar o banco de dados. {DATABASE=} \n {users=}\n Erro: {e}")
         raise
 
 def add_user(user_name: str, user_age: str, users: Dict[str, str]):
     """Adiciona um novo usuário ao banco de dados."""
-    logger.info(f"Operação 'add': Adicionando usuário - nome={user_name}, idade={user_age}")
+    logger.info(f"Adicionando o usuário {user_name=} {user_age=}")
 
     if user_name in users:
-        logger.warning(f"Usuário {user_name} já existe no banco de dados.")
         print(f"Usuário {user_name} já existe.")
+        logger.warning("Usuário já existente no banco. Retorno ao laço principal...")
         return
 
     users[user_name] = user_age
     save_users(users)
-    logger.info(f"Usuário {user_name} adicionado com sucesso. Total de usuários: {len(users)}")
+    logger.info("Usuário adicionado com sucesso!")
     print(f"Usuário {user_name} adicionado com sucesso!")
 
 def rm_user(user_name: str, users: Dict[str, str]):
     """Remove um usuário do banco de dados."""
-    logger.info(f"Operação 'remove': Removendo usuário - nome={user_name}")
-
+    logger.info(f"Removendo o usuário {user_name=}")
     if user_name in users:
         del users[user_name]
         save_users(users)
-        logger.info(f"Usuário {user_name} removido com sucesso. Total de usuários restantes: {len(users)}")
+        logger.info(f"Usuário removido com sucesso!")
         print(f"Usuário {user_name} removido com sucesso!")
     else:
-        logger.warning(f"Usuário {user_name} não encontrado no banco de dados.")
+        logger.info(f"{user_name=} não encontrado.")
         print(f"Usuário {user_name} não encontrado.")
 
-def search_user(user_name: str, users: Dict[str, str]) -> Optional[str]:
+def search_user_age(user_name: str, users: Dict[str, str]) -> Optional[str]:
     """Busca um usuário no banco de dados."""
-    logger.info(f"Operação 'search': Buscando usuário - nome={user_name}")
-
+    logger.info(f"Buscando {user_name=}..")
     if user_name in users:
         age = users[user_name]
-        logger.info(f"Usuário encontrado: {user_name} - {age}")
+        logger.info(f"Encontrado! {user_name=} user_age={age}")
         return age
     else:
-        logger.info(f"Usuário {user_name} não encontrado.")
+        logger.info(f"{user_name=} não encontrado")
         return None
 
 def list_users(users: Dict[str, str]):
     """Lista todos os usuários em formato de tabela."""
-    logger.info("Operação 'list': Listando todos os usuários")
-    
     if not users:
         print("\nNenhum usuário cadastrado.")
         return
@@ -103,6 +96,7 @@ def list_users(users: Dict[str, str]):
 
 def display_help():
     """Exibe mensagem de ajuda com os comandos disponíveis."""
+    logger.debug("Mostrando mensagem de help")
     help_text = """
 Comandos disponíveis:
   add <nome> <idade>  - Adiciona um novo usuário
@@ -116,39 +110,36 @@ Exemplos:
   add João Silva 25     - Adiciona um novo usuário
   rm Maria Santos       - Remove um usuário
   search Pedro Almeida  - Busca um usuário
-  list                  - Mostra todos os usuários
+  list                 - Mostra todos os usuários
 """
     print(help_text)
 
 def main():
+    logger.info("App iniciado")
     users = load_users()
-    
     print("\n=== Sistema de Gerenciamento de Usuários ===")
     display_help()
     
     while True:
+        logger.info("Aguardando input do usuário...")
         try:
-            # Obtém entrada do usuário
             user_input = input("\nDigite um comando (ou 'sair' para encerrar): ").strip()
             
-            # Ignora entradas vazias
             if not user_input:
                 continue
-                
-            # Divide o comando em partes
+
+            logger.debug(f"Input do usuário: {user_input}")
             parts = user_input.split()
             command = parts[0].lower()
             
-            # para sair
             if command == 'sair':
                 print("Encerrando o programa...")
+                logger.info("App encerrado")
                 break
                 
-            # caso precise de ajuda
             elif command == 'help':
                 display_help()
                 
-            #  para adicionar usuário
             elif command == 'add':
                 if len(parts) < 3:
                     print("Formato incorreto. Uso: add <nome> <idade>")
@@ -157,10 +148,10 @@ def main():
                 age = parts[-1]
                 if not age.isdigit():
                     print("Erro: A idade deve ser um número inteiro.")
+                    logger.warning(f"Idade passada em input não é numérica: {age}")
                     continue
                 add_user(name, age, users)
                 
-            # para remover usuário
             elif command == 'rm':
                 if len(parts) < 2:
                     print("Formato incorreto. Uso: rm <nome>")
@@ -168,30 +159,25 @@ def main():
                 name = ' '.join(parts[1:])  # Permite nomes com espaços
                 rm_user(name, users)
                 
-            #para buscar usuário
             elif command == 'search':
                 if len(parts) < 2:
                     print("Formato incorreto. Uso: search <nome>")
                     continue
                 name = ' '.join(parts[1:])  # Permite nomes com espaços
-                age = search_user(name, users)
+                age = search_user_age(name, users)
                 if age:
                     print(f"\nUsuário encontrado:\nNome: {name}\nIdade: {age}")
                 else:
                     print(f"\nUsuário '{name}' não encontrado.")
             
-            # para listar todos os usuários
             elif command == 'list':
                 list_users(users)
-                    
-            # não reconhecido
+                
             else:
                 print("Comando não reconhecido. Digite 'help' para ver os comandos disponíveis.")
                 
         except Exception as e:
-            logger.error(f"Erro durante a execução: {e}")
             print(f"Ocorreu um erro: {e}\nDigite 'help' para ajuda.")
 
 if __name__ == "__main__":
     main()
-# %%

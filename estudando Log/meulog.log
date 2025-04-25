@@ -40,3 +40,7 @@
 2025-04-25 08:52:48,215 - root - INFO - Usuários salvos com sucesso. Total de usuários: 3 - save_users - Linha: 41
 2025-04-25 08:52:48,216 - root - INFO - Usuário joao teste adicionado com sucesso. Total de usuários: 3 - add_user - Linha: 57
 2025-04-25 08:53:11,036 - root - INFO - Operação 'list': Listando todos os usuários - list_users - Linha: 87
+2025-04-25 09:00:22,773 - root - DEBUG - Carregando usuários do arquivo database.txt... - load_users - Linha: 22
+2025-04-25 09:00:22,776 - root - INFO - Usuários carregados com sucesso. Total de usuários: 3 - load_users - Linha: 27
+2025-04-25 09:01:05,153 - root - INFO - Operação 'add': Adicionando usuário - nome=andrew reis, idade=32 - add_user - Linha: 49
+2025-04-25 09:01:05,153 - root - WARNING - Usuário andrew reis já existe no banco de dados. - add_user - Linha: 52
